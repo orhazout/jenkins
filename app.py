@@ -12,11 +12,11 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = "my is secret key"
 CORS(app)
 
-db_host = "34.79.23.69"
-db_port = 5432
-db_name = "postgres"
-db_user = "postgres"
-db_password = "XPgfSh2OMe"
+db_host = os.environ.get('DB_HOST', 'localhost')
+db_port = os.environ.get('DB_PORT', '5432')
+db_name = os.environ.get('DB_NAME', 'postgres')
+db_user = os.environ.get('DB_USERNAME', 'postgres')
+db_password = os.environ.get('DB_PASSWORD', 'secretpassword')
 
 def create_connection():
     conn = psycopg2.connect(
