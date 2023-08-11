@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pets-app
+  labels:
+    app: pets-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pets-app
+  template:
+    metadata:
+      labels:
+        app: pets-app
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "orhazout/pets-app:{{ .Values.image.tag }}"
+          ports:
+            - containerPort: 5000
+          env:
+            - name: DB_HOST
+              value: {{ .Values.postgresql.host }}
+            - name: DB_PORT
+              value: "{{ .Values.postgresql.port }}"
+            - name: DB_NAME
+              value: {{ .Values.postgresql.database }}
+            - name: DB_USERNAME
+              value: {{ .Values.postgresql.username }}
+            - name: DB_PASSWORD
+              value: {{ .Values.postgresql.password }}

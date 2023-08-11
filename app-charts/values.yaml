@@ -1,0 +1,14 @@
+image:
+  repository: orhazout/pets-app
+  tag: "{{ .Chart.Version }}"
+service:
+  type: LoadBalancer
+  port: 5000
+  nodePort: null
+postgresql:
+  enabled: false
+  host: "34.79.23.69"
+  port: "5432"
+  database: postgres
+  username: postgres
+  password: secretpassword

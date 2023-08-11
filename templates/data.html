@@ -1,0 +1,57 @@
+{% extends 'index.html' %}
+
+{% block content %}
+{% for message in get_flashed_messages() %}
+
+    <div class="alert alert-success d-flex align-items-center" role="alert">
+        <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+        <div>
+            An example success alert with an icon
+        </div>
+    </div>
+{% endfor %}
+{% if name %}
+    <h1> Your Pet Was Added !</h1>
+    <br/><br/>
+<table class="table table-dark table-hover table-bordered table-striped">
+{% for pet in our_pets %}
+    <tr>
+    <td>{{ pet[0] }}. <a href="{{url_for('update', id=pet[0])}}">{{ pet[1] }}</a> - {{ pet[2] }} - {{ pet[3] }}</td>
+    </tr>
+{% endfor %}
+</table>
+{% else %}
+    <h1> list of pets :</h1>
+    <br/>
+<div class="shadow p-3 mb-5 bg-body rounded">
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        {{ form.name.label(
+        class="form-label")}}
+        {{ form.name(
+        class="form-control") }}
+        <br/>
+        {{ form.weight.label(
+        class="form-label")}}
+        {{ form.weight(
+        class="form-control") }}
+        <br/>
+        {{ form.time.label(
+        class="form-label")}}
+        {{ form.time(
+        class="form-control") }}
+        <br/>
+        {{ form.submit(class="btn
+        btn-dark") }}
+    </form>
+</div>
+<br/><br/><br/>
+<table class="table table-dark table-hover table-bordered table-striped">
+{% for pet in our_pets %}
+    <tr>
+    <td>{{ pet[0] }}. <a href="{{url_for('update', id=pet[0])}}">{{ pet[1] }}</a> - {{ pet[2] }} - {{ pet[3] }}</td>
+    </tr>
+{% endfor %}
+</table>
+{% endif %}
+{% endblock %}

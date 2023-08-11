@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+spec:
+  containers:  # list of containers that you want present for your build, you can define a default container in the Jenkinsfile
+    - name: pets-app-docker-helm-build
+      image: ezezeasy/ez-docker-helm-build
+      command: ["tail", "-f", "/dev/null"]
+      imagePullPolicy: Always
+      volumeMounts:
+        - name: docker
+          mountPath: /var/run/docker.sock # We use the k8s host docker engine
+  volumes:
+    - name: docker
+      hostPath:
+        path: /var/run/docker.sock

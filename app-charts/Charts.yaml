@@ -1,0 +1,9 @@
+apiVersion: v2
+appVersion: "0.0.1"
+description: A Helm chart for pets-app
+name: chart-pets-app
+version: 0.0.1
+type: application
+maintainers:
+  - name: orhazout
+    email: orhazout123@gmail.com
