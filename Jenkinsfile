@@ -33,7 +33,7 @@ pipeline {
                         env.BUILD_ID = "1."+id
                     }
                     else {
-                        env.BUILD_ID = "0." + ezUtils.getUniqueBuildIdentifier("issueNumber") + "." + id
+                        env.BUILD_ID = "0." + id
                     }
                     currentBuild.displayName+=" {build-name:"+env.BUILD_ID+"}"
                 }
