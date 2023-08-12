@@ -12,11 +12,17 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = "my is secret key"
 CORS(app)
 
-db_host = os.environ.get('DB_HOST', 'localhost')
-db_port = os.environ.get('DB_PORT', '5432')
-db_name = os.environ.get('DB_NAME', 'postgres')
-db_user = os.environ.get('DB_USERNAME', 'postgres')
-db_password = os.environ.get('DB_PASSWORD', 'secretpassword')
+# db_host = os.environ.get('DB_HOST', 'localhost')
+# db_port = os.environ.get('DB_PORT', '5432')
+# db_name = os.environ.get('DB_NAME', 'postgres')
+# db_user = os.environ.get('DB_USERNAME', 'postgres')
+# db_password = os.environ.get('DB_PASSWORD', 'secretpassword')
+
+db_host = '34.79.23.69'
+db_port = '5432'
+db_name = 'postgres'
+db_user = 'postgres'
+db_password = 'XPgfSh2OMe'
 
 def create_connection():
     conn = psycopg2.connect(
@@ -41,7 +47,7 @@ def connect_db():
 
         # Create the users table if it does not exist
         cursor.execute("""
-            CREATE TABLE IF NOT EXISTS pets-app (
+            CREATE TABLE IF NOT EXISTS petsapp (
                        id SERIAL PRIMARY KEY,
                        name VARCHAR,
                        age INTEGER,
@@ -85,7 +91,7 @@ def data():
     if form.validate_on_submit():
         pets = None
         if pets is None:
-            cur.execute("INSERT INTO pets-app (name, age, type) VALUES (%s, %s, %s)", (form.name.data, form.age.data, form.type.data))
+            cur.execute("INSERT INTO petsapp (name, age, type) VALUES (%s, %s, %s)", (form.name.data, form.age.data, form.type.data))
             conn.commit()
             cur.close()
             conn.close()
@@ -95,7 +101,7 @@ def data():
         form.type.data = ''
     conn = create_connection()
     cur = conn.cursor()
-    cur.execute("SELECT * FROM pets-app")
+    cur.execute("SELECT * FROM petsapp")
     our_pets= cur.fetchall()
     cur.close()
     conn.close()
@@ -106,7 +112,7 @@ def update(id):
     conn = create_connection()
     cur = conn.cursor()
     name=None
-    cur.execute("SELECT * FROM pets-app")
+    cur.execute("SELECT * FROM petsapp")
     name_to_update= cur.fetchall()
     form = NameForm()
     for pet in name_to_update:
@@ -114,7 +120,7 @@ def update(id):
             try:
                 conn = create_connection()
                 cur = conn.cursor()    
-                cur.execute("UPDATE pets-app SET name = %s, age = %s, type = %s WHERE id = %s;", (form.name.data, form.age.data, form.type.data, pet[0]))
+                cur.execute("UPDATE petsapp SET name = %s, age = %s, type = %s WHERE id = %s;", (form.name.data, form.age.data, form.type.data, pet[0]))
                 conn.commit()
                 cur.close()
                 conn.close()
@@ -133,7 +139,7 @@ def update(id):
 def dogs():
     conn = create_connection()
     cur = conn.cursor()
-    cur.execute("SELECT * FROM pets-app")
+    cur.execute("SELECT * FROM petsapp")
     our_pets= cur.fetchall()
     cur.close()
     conn.close()
@@ -143,7 +149,7 @@ def dogs():
 def cats():
     conn = create_connection()
     cur = conn.cursor()
-    cur.execute("SELECT * FROM pets-app")
+    cur.execute("SELECT * FROM petsapp")
     our_pets= cur.fetchall()
     cur.close()
     conn.close()
@@ -153,10 +159,10 @@ def cats():
 def others():
     conn = create_connection()
     cur = conn.cursor()
-    cur.execute("SELECT * FROM pets-app")
+    cur.execute("SELECT * FROM petsapp")
     our_pets= cur.fetchall()
     cur.close()
     conn.close()
     return render_template("others.html", our_pets=our_pets)
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+    app.run(host="0.0.0.0", port=9000)
