@@ -159,4 +159,4 @@ def others():
     conn.close()
     return render_template("others.html", our_pets=our_pets)
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=9000)
+    app.run(host="0.0.0.0", port=5000)
