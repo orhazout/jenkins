@@ -1,0 +1,15 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<br/><br/>
+<table class="table table-secondary table-hover table-bordered table-striped">
+{% for pet in our_pets %}
+    {% if pet[3]=='cat' %}
+        <tr>
+        <td>{{ pet[0] }}. {{ pet[1] }} - {{ pet[2] }} - {{ pet[3] }}</td>
+        </tr>
+    {% endif %}
+{% endfor %}
+</table>
+{% endblock %}

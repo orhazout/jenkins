@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+<nav class="navbar  navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
         <img src="https://www.pngfind.com/pngs/m/361-3618559_japanese-akita-icon-wrapping-paper-shiba-inu-hd.png" width="30" height="24" class="d-inline-block align-text-top">
@@ -14,8 +14,8 @@
               Pet Overall
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Dogs</a></li>
-              <li><a class="dropdown-item" href="#">Cats</a></li>
+              <li><a class="dropdown-item" href="{{ url_for('dogs') }}">Dogs</a></li>
+              <li><a class="dropdown-item" href="{{ url_for('cats') }}">Cats</a></li>
               <li><a class="dropdown-item" href="#">Other Types</a></li>
             </ul>
           </li>

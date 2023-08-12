@@ -41,11 +41,11 @@ def connect_db():
 
         # Create the users table if it does not exist
         cursor.execute("""
-            CREATE TABLE IF NOT EXISTS pets (
+            CREATE TABLE IF NOT EXISTS pets-app (
                        id SERIAL PRIMARY KEY,
                        name VARCHAR,
-                       weight_value INTEGER,
-                       mytime TIMESTAMP
+                       age INTEGER,
+                       type VARCHAR
             )
         """)
         conn.commit()
@@ -63,8 +63,8 @@ def connect_db():
 
 class NameForm(FlaskForm):
     name = StringField("Name", validators=[DataRequired()])
-    weight = StringField("Weight", validators=[DataRequired()])
-    time = StringField("Time", validators=[DataRequired()])
+    age = StringField("Age", validators=[DataRequired()])
+    type = StringField("Type", validators=[DataRequired()])
     submit = SubmitField("Submit")
 
 @app.route('/')
@@ -85,17 +85,17 @@ def data():
     if form.validate_on_submit():
         pets = None
         if pets is None:
-            cur.execute("INSERT INTO pets (name, weight_value, mytime) VALUES (%s, %s, %s)", (form.name.data, form.weight.data, form.time.data))
+            cur.execute("INSERT INTO pets-app (name, age, type) VALUES (%s, %s, %s)", (form.name.data, form.age.data, form.type.data))
             conn.commit()
             cur.close()
             conn.close()
         name = form.name.data
         form.name.data = ''
-        form.weight.data = ''
-        form.time.data = ''
+        form.age.data = ''
+        form.type.data = ''
     conn = create_connection()
     cur = conn.cursor()
-    cur.execute("SELECT * FROM pets")
+    cur.execute("SELECT * FROM pets-app")
     our_pets= cur.fetchall()
     cur.close()
     conn.close()
@@ -106,7 +106,7 @@ def update(id):
     conn = create_connection()
     cur = conn.cursor()
     name=None
-    cur.execute("SELECT * FROM pets")
+    cur.execute("SELECT * FROM pets-app")
     name_to_update= cur.fetchall()
     form = NameForm()
     for pet in name_to_update:
@@ -114,7 +114,7 @@ def update(id):
             try:
                 conn = create_connection()
                 cur = conn.cursor()    
-                cur.execute("UPDATE pets SET name = %s, weight_value = %s, mytime = %s WHERE id = %s;", (form.name.data, form.weight.data, form.time.data, pet[0]))
+                cur.execute("UPDATE pets-app SET name = %s, age = %s, type = %s WHERE id = %s;", (form.name.data, form.age.data, form.type.data, pet[0]))
                 conn.commit()
                 cur.close()
                 conn.close()
@@ -128,6 +128,35 @@ def update(id):
                 return render_template("update.html", form=form, pet=pet)
         else:
             return render_template("update.html", form=form, pet=pet)
+        
+@app.route('/dogs', methods=['GET'])
+def dogs():
+    conn = create_connection()
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM pets-app")
+    our_pets= cur.fetchall()
+    cur.close()
+    conn.close()
+    return render_template("dogs.html", our_pets=our_pets)
 
+@app.route('/cats', methods=['GET'])
+def cats():
+    conn = create_connection()
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM pets-app")
+    our_pets= cur.fetchall()
+    cur.close()
+    conn.close()
+    return render_template("cats.html", our_pets=our_pets)
+
+@app.route('/others', methods=['GET'])
+def others():
+    conn = create_connection()
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM pets-app")
+    our_pets= cur.fetchall()
+    cur.close()
+    conn.close()
+    return render_template("others.html", our_pets=our_pets)
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+    app.run(host="0.0.0.0", port=9000)
