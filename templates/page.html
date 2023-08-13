@@ -2,8 +2,123 @@
 
 {% block content %}
 <br/><br/>
-hello!
+<div data-bs-root-margin="0px 0px -40%" class="scrollspy-example bg-body-tertiary p-3 rounded-2" tabindex="0">
+    <h4>Welcome to our animal shelter!</h4>
+    <p>our dedicate staff is waiting for you ! there are plenty of pets just for you!</p>
+    <p>scroll down to watch our shelter and pets...</p>
+  </div>
+  <br/>
+<div class="row">
+    <div class="col-md-9" style="padding-left: 15%;">
+        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner" data-bs-interval="3000">
+                <div class="carousel-item active">
+                    <img src="static/images/dog2.jpg" class="d-block w-100" alt="...">
+                </div>
+            <div class="carousel-item" data-bs-interval="3000">
+                <img src="static/images/place2.jpg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item" data-bs-interval="3000">
+                <img src="static/images/place3.jpg" class="d-block w-100" alt="...">
+            </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+</div>
+<br/><br/>
 
-
+<div data-bs-root-margin="0px 0px -40%" class="scrollspy-example bg-body-tertiary p-3 rounded-2" tabindex="0">
+    <h4>In our shelter there is plenty of dogs!</h4>
+    <p>slide down to watch all the dogs</p>
+  </div>
+  <br/>
+<div class="row">
+    <div class="col-md-9" style="padding-left: 15%;">
+        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner" data-bs-interval="3000">
+                <div class="carousel-item active">
+                    <img src="static/images/dog1.jpg" class="d-block w-100" alt="...">
+                </div>
+            <div class="carousel-item" data-bs-interval="3000">
+                <img src="static/images/dog3.jpeg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item" data-bs-interval="3000">
+                <img src="static/images/dog5.jpeg" class="d-block w-100" alt="...">
+            </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+</div>
+<br/><br/>
+<div class="row">
+    <div class="col-sm-3 mb-3 mb-sm-0">
+        <div class="card" style=" width: 18rem;">
+            <img src="static/images/dog4.jpeg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Meet Sam!</h5>
+                <p class="card-text">sam is a cute boy who's looking to have fun!</p>
+                <a href="{{ url_for('dogs') }}" class="btn btn-secondary">Go Adopt!</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-3 mb-3 mb-sm-0">
+        <div class="card" style="width: 18rem;">
+            <img src="static/images/dog6.jpeg" class="card-img-top" alt="...">
+            <div class="card-body" >
+                <h5 class="card-title">Meet Luna!</h5>
+                <p class="card-text">Luna is a fun and energatic pitbull, come meet!</p>
+                <a href="{{ url_for('dogs') }}" class="btn btn-secondary">Go Adopt!</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-3 mb-3 mb-sm-0">
+        <div class="card" style="width: 18rem;" >
+            <img src="static/images/dog5.jpeg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Meet Bunny!</h5>
+                <p class="card-text">Bunny is a little but loyal little friend!</p>
+                <a href="{{ url_for('dogs') }}" class="btn btn-secondary">Go Adopt!</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-3 mb-3 mb-sm-0">
+        <div class="card" style="width: 18rem;" >
+            <img src="static/images/dog8.jpeg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Meet Nick!</h5>
+                <p class="card-text">Nick is a sport eddict dog who love the beach!</p>
+                <a href="{{ url_for('dogs') }}" class="btn btn-secondary">Go Adopt!</a>
+            </div>
+        </div>
+    </div>
+</div>
+<br/><br/>
 
 {% endblock %}
+

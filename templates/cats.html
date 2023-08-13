@@ -1,6 +1,46 @@
 {% extends 'index.html' %}
 
 {% block content %}
+<br/><br/>
+
+<div data-bs-root-margin="0px 0px -40%" class="scrollspy-example bg-body-tertiary p-3 rounded-2" tabindex="0">
+    <h4>In our shelter there is plenty of cats!</h4>
+    <p>slide down to watch all the cats!</p>
+  </div>
+  <br/>
+<div class="row">
+    <div class="col-md-9" style="padding-left: 15%;">
+        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner" data-bs-interval="3000">
+                <div class="carousel-item active">
+                    <img src="static/images/cat2.jpeg" class="d-block w-100" alt="...">
+                </div>
+            <div class="carousel-item" data-bs-interval="3000">
+                <img src="static/images/cat3.webp" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item" data-bs-interval="3000">
+                <img src="static/images/dog5.cat1jpeg" class="d-block w-100" alt="...">
+            </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+</div>
+
+
+<br/><br/><br/>
 <p class="lead">
     <h1>welcome to our cats page, here you can view all our cats!</h1>
     we have a lot of cats just waiting for adoption!
